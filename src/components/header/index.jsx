@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchInput from "../../microComponents/SearchInput"
 
 const styles = theme => ({
-  custom: {
+  root: {
     backgroundColor: lightBlue[600],
     height: "150px",
     padding: "20px",
@@ -27,7 +27,7 @@ class HeaderComponent extends Component {
     const { classes } = this.props;
 
     return (
-      <header className={classes.custom}>
+      <header className={classes.root}>
         <SearchInput className={classes.searchInput} />
       </header>
     );

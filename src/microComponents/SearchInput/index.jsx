@@ -7,7 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import lightBlue from '@material-ui/core/colors/lightBlue';
 
 const styles = theme => ({
-  custom: {
+  root: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 300,
@@ -30,7 +30,7 @@ class SearchInputComponent extends Component {
 
   render() {
     const { classes, className } = this.props;
-    const classNames = [classes.custom, className]
+    const classNames = [classes.root, className]
       .filter(item => item.length)
       .join(" ");
 
@@ -55,7 +55,7 @@ class SearchInputComponent extends Component {
           disableUnderline: true,
           startAdornment: (
             <InputAdornment position="start">
-              <Icon icon="search" color="#fff" />
+              <Icon icon="search" color="#fff" width="24" height="24" viewBox="0 0 24 24"/>
             </InputAdornment>
           ),
         }}

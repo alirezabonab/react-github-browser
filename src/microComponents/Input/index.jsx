@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Sizes from '../../design/sizes'
 const styles = theme => ({
-  custom: {
+  root: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     borderRadius: Sizes[2]
@@ -38,7 +38,7 @@ class InputComponent extends Component {
 
   render() {
     const { classes, className } = this.props;
-    const classNames = [classes.custom, className]
+    const classNames = [classes.root, className]
       .filter(item => item.length)
       .join(" ");
 
