@@ -4,10 +4,23 @@ import RepositoryList from '../RepositoryList';
 
 const styles = theme => ({
     root:{
-        flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignContent: "flex-start ",
+        width: "100%",
+        flexDirection: "row wrap",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        display:"flex",
+        alignContent: "flex-start ",
+        marginTop: "200px",
+    },
+    sideLeft : {
+        flex:1,
+        
+    },
+    sideRight :{
+        flex:1
+    },
+    content : {
+        flex: 2
     }
 })
 
@@ -16,8 +29,17 @@ class Content extends Component{
 
 
     render(){
+
+        const {classes} = this.props
+
         return(
-            <RepositoryList repositories={this.props.repositories}/>
+            <div className={classes.root}>
+                <div className={classes.sideLeft} ></div>
+                <div className={classes.content}>
+                    <RepositoryList  repositories={this.props.repositories}/>
+                </div>
+                <div className={classes.sideRight}></div>
+            </div>
         )
     }
 }

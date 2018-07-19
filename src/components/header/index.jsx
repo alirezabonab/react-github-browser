@@ -15,6 +15,11 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    zIndex: 10,
   },
   searchInput:{
     backgroundColor : lightBlue[200],
