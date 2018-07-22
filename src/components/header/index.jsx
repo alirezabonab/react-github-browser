@@ -3,13 +3,14 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 import {connect} from 'react-redux';
 import { withStyles } from "@material-ui/core/styles";
 import SearchInput from "../../microComponents/SearchInput"
+
 import { getRepositoriesByUsername } from '../../actions/repository';
 
 const styles = theme => ({
   root: {
     backgroundColor: lightBlue[600],
-    height: "150px",
-    padding: "20px",
+    height: "50px",
+    
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
@@ -28,7 +29,7 @@ const styles = theme => ({
   }
 });
 
-class HeaderComponent extends Component {
+class Header extends Component {
 
   constructor(props){
     super(props)
@@ -44,20 +45,26 @@ class HeaderComponent extends Component {
   
   render() {
     const { classes } = this.props;
+   
 
     return (
       <header className={classes.root}>
-        <SearchInput 
-          placeholder="Search Github Username"
-          onChange={this.searchInputValueChanged} 
-          onEnter={this.searchInputOnEnter} 
-          className={classes.searchInput} />
+        
+          
+          <SearchInput 
+                    placeholder="Search Github Username"
+                    onChange={this.searchInputValueChanged} 
+                    onEnter={this.searchInputOnEnter} 
+                    className={classes.searchInput} />
+        
+        
       </header>
     );
   }
 }
 
-const component =  withStyles(styles)(HeaderComponent);
+const component =  withStyles(styles)(Header);
+
 
 function mapDispatchToProp(dispatch) {
   return {

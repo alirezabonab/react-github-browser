@@ -13,6 +13,12 @@ const styles = theme => ({
       justifyContent: "flex-start",
       alignItems: "flex-start ",
       alignContent: "flex-start ",
+      "&:hover" : {
+            background : "#eee",
+            borderRadius : "2px",
+
+        }
+        
     },
     stats: {
         width: "100%",
@@ -50,36 +56,39 @@ class RepositoryListItem extends Component{
 
     render(){
         const { classes } = this.props;
+       
         
         return(
             
-            <div className={classes.root}>
-                <div className={classes.texts + " " + classes.fullName}> 
-                    {this.props.fullName}
-                </div>
-                {this.props.description && <div className={classes.texts}>
-                    {this.props.description}
-                </div>}
-                <div className={classes.stats + " " + classes.texts}>
-                     <div  className={classes.statsItem}> 
-                        <Icon icon="fork" color={blueGrey[100]} width="16" height="16" viewBox="0 0 32 32"/> 
+            <div >
+                <div className={classes.root}>
+                    <div className={classes.texts + " " + classes.fullName}> 
+                        {this.props.fullName}
                     </div>
-                    <div  className={classes.statsItem}> 
-                        {this.props.forks}
-                    </div>
-                    <div  className={classes.statsItem}> 
-                        <Icon icon="star" color={blueGrey[100]}  width="16" height="16" viewBox="0 0 32 32"/> 
-                    </div>
-                    <div  className={classes.statsItem}> 
-                        {this.props.stars}
-                    </div>
-                   
-                </div>
-                <div className={classes.stats + " " + classes.texts}>
-                    {this.props.language && 
-                        <div className={classes.statsItem}> {this.props.language} - </div> }
-                    <div className={classes.statsItem}> Updated At : {this.props.lastUpdated}</div>
+                    {this.props.description && <div className={classes.texts}>
+                        {this.props.description}
+                    </div>}
+                    <div className={classes.stats + " " + classes.texts}>
+                        <div  className={classes.statsItem}> 
+                            <Icon icon="fork" color={blueGrey[100]} width="16" height="16" viewBox="0 0 32 32"/> 
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            {this.props.forks}
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            <Icon icon="star" color={blueGrey[100]}  width="16" height="16" viewBox="0 0 32 32"/> 
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            {this.props.stars}
+                        </div>
                     
+                    </div>
+                    <div className={classes.stats + " " + classes.texts}>
+                        {this.props.language && 
+                            <div className={classes.statsItem}> {this.props.language} - </div> }
+                        <div className={classes.statsItem}> Updated At : {this.props.lastUpdated}</div>
+                        
+                    </div>
                 </div>
                 <hr className={classes.divider}/>  
             </div>

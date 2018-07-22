@@ -48,3 +48,11 @@ export function getRepositoriesByUsername(username) {
             });
     };
 }
+
+
+export function setSelectedRepository(repository){
+    return {
+        type: ActionTypes.SET_SELECTED_REPOSITORY,
+        selectedRepository : repository,
+    };
+}

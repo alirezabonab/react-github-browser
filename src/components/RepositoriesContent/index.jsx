@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import RepositoryList from '../RepositoryList';
+import EmptyStateContent from '../EmptyStateContent';    
 
 const styles = theme => ({
     root:{
@@ -10,7 +11,7 @@ const styles = theme => ({
         alignItems: "center",
         display:"flex",
         alignContent: "flex-start ",
-        marginTop: "200px",
+        
     },
     sideLeft : {
         flex:1,
@@ -31,14 +32,19 @@ class RepositoriesContent extends Component{
     render(){
 
         const {classes} = this.props
-
+        const {repositories , isExecuting } = this.props
         return(
-            <div className={classes.root}>
-                <div className={classes.sideLeft} ></div>
-                <div className={classes.content}>
-                    <RepositoryList  repositories={this.props.repositories}/>
+            <div>
+            {(isExecuting || repositories.length == 0) ? 
+                <EmptyStateContent isExecuting={this.props.isExecuting}/> :
+                <div className={classes.root}>
+                    <div className={classes.sideLeft} ></div>
+                    <div className={classes.content}>
+                        <RepositoryList  repositories={this.props.repositories}/>
+                    </div>
+                    <div className={classes.sideRight}></div>
                 </div>
-                <div className={classes.sideRight}></div>
+            }
             </div>
         )
     }
