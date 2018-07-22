@@ -1,8 +1,8 @@
 import {GET_REPOSITORY_EXECUTING,  
     GET_REPOSITORY_SUCCESS,    
     GET_REPOSITORY_FAIL,
-    SET_SELECTED_REPOSITORY,
-       } from '../../actions/actionTypes'
+    SET_REPOSITORY_SELECTED_ITEM,
+       } from '../../actions/repositoryActionTypes'
 
 var initialState = {
     isExecuting: false,
@@ -23,7 +23,7 @@ export default function RepositoryReducer(state = initialState, action) {
         case GET_REPOSITORY_FAIL :
             newState = {...state , ...action.payload};
             break
-        case SET_SELECTED_REPOSITORY : 
+        case SET_REPOSITORY_SELECTED_ITEM : 
             newState = {...state , selectedRepository : action.selectedRepository}
             break
     }

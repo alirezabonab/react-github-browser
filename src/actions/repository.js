@@ -1,5 +1,6 @@
-import * as ActionTypes from './actionTypes'
+import * as ActionTypes from './repositoryActionTypes'
 import {getRepositories} from '../service/repository'
+import {getCommitsByRepository} from './commit'
 
 function getRepositoriesExecuting() {
     return {
@@ -38,8 +39,8 @@ function getRepositoriesFail(error) {
 
 export function getRepositoriesByUsername(username) {
     return function (dispatch) {
+        dispatch(setSelectedRepository(null))
         dispatch(getRepositoriesExecuting())
-
         return getRepositories(username)
             .then(response => {
                 dispatch(getRepositoriesSuccessful(response));
@@ -50,9 +51,16 @@ export function getRepositoriesByUsername(username) {
 }
 
 
-export function setSelectedRepository(repository){
-    return {
-        type: ActionTypes.SET_SELECTED_REPOSITORY,
-        selectedRepository : repository,
+export function setSelectedRepository(repo){
+    return function (dispatch) {
+        
+        if(repo)
+            dispatch(getCommitsByRepository(repo.owner.login , repo.name))
+
+        dispatch( {
+            type: ActionTypes.SET_REPOSITORY_SELECTED_ITEM,
+            selectedRepository : repo,
+        });
     };
+   
 }

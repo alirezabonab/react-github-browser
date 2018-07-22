@@ -1,0 +1,5 @@
+
+export const GET_COMMIT_EXECUTING  = "GET_COMMIT_EXECUTING";
+export const GET_COMMIT_SUCCESS    = "GET_COMMIT_SUCCESS";
+export const GET_COMMIT_FAIL       = "GET_COMMIT_FAIL";
+
