@@ -6,15 +6,18 @@ import {connect} from 'react-redux';
 import { getRepositoriesByUsername } from '../actions/repository';
 import Content from '../components/Content';
 import HeaderComponent  from '../components/Header';
+import EmptyStateContent from '../components/EmptyStateContent';
 
 
 class App extends Component {
 
   componentWillMount() {
-    this.props.getRepositoriesByUsername("Facebook");
+    //this.props.getRepositoriesByUsername("Facebook");
   }
 
   render() {
+
+    
     return (
       <div className="App">
         <HeaderComponent/>
@@ -22,7 +25,7 @@ class App extends Component {
         {
           this.props.repositories.length > 0 ?
           <Content repositories={this.props.repositories}/>  :
-          <div> no content </div>
+          <EmptyStateContent isExecuting={this.props.isExecuting}/>
         }
         
       </div>
@@ -32,7 +35,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-      repositories: state.repository.repositories
+      repositories: state.repository.repositories,
+      isExecuting: state.repository.isExecuting,
   };
 }
 

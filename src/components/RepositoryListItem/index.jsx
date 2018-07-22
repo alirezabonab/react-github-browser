@@ -29,6 +29,7 @@ const styles = theme => ({
         minHeight : sizes[32],
         color : blueGrey[300],
         fontSize : sizes[12],
+        textAlign : "left"
     },
     fullName : {
         fontWeight: "bold",

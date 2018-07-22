@@ -35,7 +35,7 @@ class SearchInputComponent extends Component {
       .join(" ");
 
     const { value } = this.props;
-    const { onChange, onClick, onEnter ,color = lightBlue[500] } = this.props;
+    const { onChange, onClick, onEnter  } = this.props;
 
     
 
