@@ -34,8 +34,9 @@ class SearchInputComponent extends Component {
       .filter(item => item.length)
       .join(" ");
 
-    const { value } = this.props;
+    const { value , placeholder = '' } = this.props;
     const { onChange, onClick, onEnter  } = this.props;
+    
 
     
 
@@ -48,6 +49,7 @@ class SearchInputComponent extends Component {
         onChange={onChange}
         onClick={onClick}
         value={value}
+        placeholder={placeholder}
         InputProps={{
           classes:{
             input:classes.inputRoot

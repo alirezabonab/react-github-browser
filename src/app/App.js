@@ -4,7 +4,7 @@ import './App.css';
 import {connect} from 'react-redux';
 
 import { getRepositoriesByUsername } from '../actions/repository';
-import Content from '../components/Content';
+import RepositoriesContent from '../components/RepositoriesContent';
 import HeaderComponent  from '../components/Header';
 import EmptyStateContent from '../components/EmptyStateContent';
 
@@ -24,7 +24,7 @@ class App extends Component {
 
         {
           this.props.repositories.length > 0 ?
-          <Content repositories={this.props.repositories}/>  :
+          <RepositoriesContent repositories={this.props.repositories}/>  :
           <EmptyStateContent isExecuting={this.props.isExecuting}/>
         }
         

@@ -42,7 +42,7 @@ class InputComponent extends Component {
       .filter(item => item.length)
       .join(" ");
 
-    const { value } = this.props;
+    const { value , placeholder = '' } = this.props;
     const { onChange, onClick, onEnter } = this.props;
     const { InputProps,autoFocus,multiline } = this.props;
 
@@ -51,6 +51,7 @@ class InputComponent extends Component {
         label={this.props.label}
         type={this.props.type}
         className={classNames}
+        placeholder={placeholder}
         onKeyDown={this.onKeyDown({ onEnter })}
         onChange={this.onChange(onChange)}
         onClick={this.onClick(onClick)}

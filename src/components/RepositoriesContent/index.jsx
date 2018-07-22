@@ -24,7 +24,7 @@ const styles = theme => ({
     }
 })
 
-class Content extends Component{
+class RepositoriesContent extends Component{
 
 
 
@@ -45,4 +45,4 @@ class Content extends Component{
 }
 
 
-export default withStyles(styles)(Content)
+export default withStyles(styles)(RepositoriesContent)

@@ -47,7 +47,11 @@ class HeaderComponent extends Component {
 
     return (
       <header className={classes.root}>
-        <SearchInput onChange={this.searchInputValueChanged} onEnter={this.searchInputOnEnter} className={classes.searchInput} />
+        <SearchInput 
+          placeholder="Search Github Username"
+          onChange={this.searchInputValueChanged} 
+          onEnter={this.searchInputOnEnter} 
+          className={classes.searchInput} />
       </header>
     );
   }
