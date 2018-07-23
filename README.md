@@ -33,3 +33,19 @@ Where “facebook” (see Task 1) is the user and “react” the repository und
 Add a search field to search for a commit message. Filter all messages which contain the search string.
 Optional: Task 4 - Endless scrolling
 Add endless scrolling for commits, ie., more than 20 commits can be loaded.*
+
+
+--------------
+
+ES6 Features used in development : 
+
+ - Constants
+ - Block-Scoped Variables
+ - Arrow Functions
+ - Default Parameter Values
+ - Spread Operator
+ - String Interpolation
+ - Custom Interpolation
+ - Property Shorthand
+ - Class Definition (vital requirement with react)
+ - 
