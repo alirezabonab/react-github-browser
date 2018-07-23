@@ -9,11 +9,11 @@ import CircularIndicator from '../../microComponents/CircularIndicator';
 const styles = theme => ({
     root:{
         width: "100%",
-        flexDirection: "row wrap",
-        justifyContent: "flex-start",
+        flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
         display:"flex",
-        alignContent: "flex-start ",
+        alignContent: "center",
         
     },
     sideLeft : {
@@ -23,8 +23,16 @@ const styles = theme => ({
     sideRight :{
         flex:1
     },
-    content : {
+    mainContent : {
         flex: 2
+    },
+    content:{
+        width: "100%",
+        flexDirection: "row wrap",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        display:"flex",
+        alignContent: "flex-start ",
     },
     searchBoxContent:{
         width:"100%",
@@ -124,19 +132,19 @@ class CommitContent extends Component{
         const {  isExecuting } = this.props
         
         return(
-            <div >
-                
+            <div  className={classes.root}>
+                <SearchInput 
+                    placeholder="search in comments"
+                    onChange={this.searchInputValueChanged} 
+                    className={classes.searchInput}
+                />
             {(isExecuting || this.getCommits().length == 0) ? 
                 <EmptyStateContent isExecuting={this.props.isExecuting}/> :
-                <div className={classes.root} >
+                <div className={classes.content} >
                     <div className={classes.sideLeft} ></div>
-                    <div className={classes.content}>
+                    <div className={classes.mainContent}>
                         <div className={classes.searchBoxContent}>
-                            <SearchInput 
-                                placeholder="search in comments"
-                                onChange={this.searchInputValueChanged} 
-                                className={classes.searchInput}
-                                 />
+                            
                             <div className={classes.commitList}>
                                 <CommitList  commits={
                                     this.getCommits()

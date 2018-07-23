@@ -45,9 +45,7 @@ class CommitListItem extends Component{
             
             <div >
                 <div className={classes.root}>
-                <div>
-                    {rowNumber}
-                </div>
+                
                     <div className={classes.commitDate}>
                         {author} - {commitDate}
                     </div>
