@@ -34,7 +34,7 @@ class SearchInputComponent extends Component {
       .filter(item => item.length)
       .join(" ");
 
-    const { value , placeholder = '' , disableUnderline , label , type } = this.props;
+    const { value , placeholder = ''  , label , type } = this.props;
     const { onChange, onClick, onEnter  } = this.props;
     
 
@@ -54,7 +54,7 @@ class SearchInputComponent extends Component {
           classes:{
             input:classes.inputRoot
           },
-          disableUnderline: disableUnderline,
+          disableUnderline: true,
           startAdornment: (
             <InputAdornment position="start">
               <Icon icon="search" color="#fff" width="24" height="24" viewBox="0 0 24 24"/>

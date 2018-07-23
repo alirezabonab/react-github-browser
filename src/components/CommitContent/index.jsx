@@ -1,8 +1,11 @@
 import React , {Component} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CommitList from '../CommitList';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import EmptyStateContent from '../EmptyStateContent';    
 import SearchInput from '../../microComponents/SearchInput'
+import CircularIndicator from '../../microComponents/CircularIndicator';
+
 const styles = theme => ({
     root:{
         width: "100%",
@@ -30,7 +33,7 @@ const styles = theme => ({
         alignItems : "center"
     },
     searchInput : {
-        
+        backgroundColor : blueGrey[50],
     },
     commitList:{
         width:"100%"
@@ -42,23 +45,88 @@ class CommitContent extends Component{
     constructor(props){
         super(props)
         this.state = {
-            filterValue : ''
+            filterValue : '',
+            isLoading : false,
+            fetchCount : 20
         }
     }
 
     searchInputValueChanged = (value) =>{
-        this.setState({filterValue:value})
+        this.setState({
+            filterValue:value,
+            fetchCount : 20,
+        })
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.onScroll, false);
+        
+    }
+  
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll = () => {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) &&
+            this.getFilteredCommits().length &&
+            !this.state.isLoading) {
+
+            this.onPaginatedSearch();
+        }   
+    }
+    
+    onPaginatedSearch = ()=>{
+
+        if(this.state.fetchCount >= this.getFilteredCommits().length ) {
+            return
+        }
+
+        this.setState({
+            isLoading : true
+        })
+
+        setTimeout(
+            ()=>{
+            this.setState({
+                fetchCount : this.state.fetchCount + 20,
+                isLoading : false
+            })
+        } 
+        , 2000)
+        
+    }
+
+    getFilteredCommits = () => {
+        if( this.state.filterValue !== '' ) 
+        {
+            return this.props.commits.filter((item)=>{
+                        return item.commit.message.toLowerCase().includes(this.state.filterValue.toLowerCase())
+                    })
+        }
+        else
+        {
+            return this.props.commits
+        }
+    }
+
+    getCommits = () =>{
+        let items = Array.from(this.getFilteredCommits()) ;
+       
+        
+
+        return items.splice(0,this.state.fetchCount)
     }
 
     render(){
 
         const {classes} = this.props
-        const {commits , isExecuting } = this.props
+        const {  isExecuting } = this.props
         
         return(
             <div >
                 
-            {(isExecuting || commits.length == 0) ? 
+            {(isExecuting || this.getCommits().length == 0) ? 
                 <EmptyStateContent isExecuting={this.props.isExecuting}/> :
                 <div className={classes.root} >
                     <div className={classes.sideLeft} ></div>
@@ -68,17 +136,15 @@ class CommitContent extends Component{
                                 placeholder="search in comments"
                                 onChange={this.searchInputValueChanged} 
                                 className={classes.searchInput}
-                                disableUnderLine={false} />
+                                 />
                             <div className={classes.commitList}>
                                 <CommitList  commits={
-                                    this.state.filterValue !== '' ? 
-                                    this.props.commits.filter((item)=>{
-                                       return item.commit.message.toLowerCase().includes(this.state.filterValue.toLowerCase())
-                                    }):
-                                    this.props.commits
+                                    this.getCommits()
                                 }
                                 />
+                                
                             </div>
+                            {this.state.isLoading ? <CircularIndicator />  : ""}
                         </div>
                     </div>
                     <div className={classes.sideRight}></div>

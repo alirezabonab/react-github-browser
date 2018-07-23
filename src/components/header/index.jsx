@@ -14,9 +14,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
-    alignContent: "center",
+    alignContent: "flex-start",
     position: "fixed",
     top: 0,
     left: 0,
@@ -25,7 +25,7 @@ const styles = theme => ({
   },
   searchInput:{
     backgroundColor : lightBlue[200],
-    
+    width : "100%"
   }
 });
 
