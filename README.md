@@ -37,7 +37,7 @@ Add endless scrolling for commits, ie., more than 20 commits can be loaded.*
 
 --------------
 
-ES6 Features used in development : 
+**ES6 Features used in development : **
 
  - Constants
  - Block-Scoped Variables
@@ -48,4 +48,3 @@ ES6 Features used in development :
  - Custom Interpolation
  - Property Shorthand
  - Class Definition (vital requirement with react)
- - 
