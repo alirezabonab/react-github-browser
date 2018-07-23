@@ -10,11 +10,11 @@ Prerequisites
 Create React App is a good starting point for a new React app:
 https://github.com/facebookincubator/create-react-app
 Required:
-● Use redux as Flux-framework.
-● Use at least 3 new features from ES6, ES7, es2015, esnext - or whatever it may be called
+ - Use redux as Flux-framework.
+ - Use at least 3 new features from ES6, ES7, es2015, esnext - or whatever it may be called
 today. Add a comment why you have used the feature Optional:
-● Use bootstrap (or similar framework) ***I have used material-ui***
-● Style it!
+ - Use bootstrap (or similar framework) ***I have used material-ui***
+ - Style it!
 
 
 **Task 1 - Connect to the Github API**
