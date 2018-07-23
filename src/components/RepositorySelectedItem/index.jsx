@@ -5,6 +5,8 @@ import sizes from '../../design/sizes';
 import Icon from '../../microComponents/Icon'
 import  blueGrey  from '@material-ui/core/colors/blueGrey';
 import  lightBlue  from '@material-ui/core/colors/lightBlue';
+import { setSelectedRepository } from '../../actions/repository';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     root: {
@@ -39,52 +41,80 @@ const styles = theme => ({
         fontWeight: "bold",
         color : blueGrey[900],
         fontSize : sizes[14],
-    }
+       
+    },
+    
     
   });
 
 class RepositorySelectedItem extends Component{
 
+    OnCloseButtonClick = () => {
+this.props.clearSelectedRepository()
+    }
 
     render(){
         const { classes } = this.props;
         const {fullName , description, forks, stars, language, lastUpdated} = this.props;
         return(
             
-            <div className={classes.root}>
-                <div className={classes.texts + " " + classes.fullName}> 
-                    {fullName}
-                </div>
-                {description && <div className={classes.texts}>
-                    {description}
-                </div>}
-                <div className={classes.stats + " " + classes.texts}>
-                     <div  className={classes.statsItem}> 
-                        <Icon icon="fork" color={blueGrey[100]} width="16" height="16" viewBox="0 0 32 32"/> 
+               
+                <div className={classes.root}  onClick={this.OnCloseButtonClick}>
+                    
+                        
+                        <div className={classes.texts + " " + classes.fullName}> 
+                            {fullName}
+                        </div>
+                    
+                
+
+                    
+                    {description ? 
+                        <div className={classes.texts}>
+                            description
+                        </div> : 
+                        ""
+                    }
+                
+
+                    <div className={classes.stats + " " + classes.texts}>
+                        <div  className={classes.statsItem}> 
+                            <Icon icon="fork" color="#fff" width="16" height="16" viewBox="0 0 32 32"/> 
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            {forks}
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            <Icon icon="star" color="#fff"  width="16" height="16" viewBox="0 0 32 32"/> 
+                        </div>
+                        <div  className={classes.statsItem}> 
+                            {stars}
+                        </div>
+                    
                     </div>
-                    <div  className={classes.statsItem}> 
-                        {forks}
+                    <div className={classes.stats + " " + classes.texts}>
+                        {language && 
+                            <div className={classes.statsItem}> {language} - </div> }
+                        <div className={classes.statsItem}> Updated At : {lastUpdated}</div>
+                        
                     </div>
-                    <div  className={classes.statsItem}> 
-                        <Icon icon="star" color={blueGrey[100]}  width="16" height="16" viewBox="0 0 32 32"/> 
-                    </div>
-                    <div  className={classes.statsItem}> 
-                        {stars}
-                    </div>
+                    
                    
                 </div>
-                <div className={classes.stats + " " + classes.texts}>
-                    {language && 
-                        <div className={classes.statsItem}> {language} - </div> }
-                    <div className={classes.statsItem}> Updated At : {lastUpdated}</div>
-                    
-                </div>
-                
-            </div>
+            
         )
     }
 }
 
-export default withStyles(styles)(RepositorySelectedItem);
+const component =  withStyles(styles)(RepositorySelectedItem);
 
 
+function mapDispatchToProps (dispatch){
+    return{
+        clearSelectedRepository: ()=>{
+            dispatch(setSelectedRepository(null))
+        }
+    }
+}
+
+export default connect(null , mapDispatchToProps)(component)

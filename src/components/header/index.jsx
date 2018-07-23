@@ -14,9 +14,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
-    alignContent: "flex-start",
+    alignContent: "flex-end",
     position: "fixed",
     top: 0,
     left: 0,
@@ -25,7 +25,7 @@ const styles = theme => ({
   },
   searchInput:{
     backgroundColor : lightBlue[200],
-    width : "100%"
+    width : "300px"
   }
 });
 
@@ -53,7 +53,7 @@ class Header extends Component {
           
           <SearchInput 
             disableUnderline={true}
-            placeholder="Search Github Username"
+            placeholder="search using github username"
             onChange={this.searchInputValueChanged} 
             onEnter={this.searchInputOnEnter} 
             className={classes.searchInput} />

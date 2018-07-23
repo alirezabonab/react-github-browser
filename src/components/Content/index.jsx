@@ -14,7 +14,7 @@ const styles = theme =>{
         },
         selectedItem : 
         {
-            backgroundColor : lightBlue[600],
+            //backgroundColor : lightBlue[600],
             padding : "10px",
             marginBottom : "10px",
             display:"flex",

@@ -101,7 +101,7 @@ class CommitContent extends Component{
                 isLoading : false
             })
         } 
-        , 2000)
+        , 1500)
         
     }
 
@@ -134,7 +134,7 @@ class CommitContent extends Component{
         return(
             <div  className={classes.root}>
                 <SearchInput 
-                    placeholder="search in comments"
+                    placeholder="search in commits"
                     onChange={this.searchInputValueChanged} 
                     className={classes.searchInput}
                 />
