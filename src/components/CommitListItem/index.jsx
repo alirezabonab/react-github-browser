@@ -39,12 +39,15 @@ class CommitListItem extends Component{
 
     render(){
         const { classes } = this.props;
-       const { message , commitDate , author} = this.props
+       const { message , commitDate , author,rowNumber} = this.props
         
         return(
             
             <div >
                 <div className={classes.root}>
+                <div>
+                    {rowNumber}
+                </div>
                     <div className={classes.commitDate}>
                         {author} - {commitDate}
                     </div>

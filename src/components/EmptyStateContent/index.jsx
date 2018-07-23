@@ -13,7 +13,7 @@ const styles = theme => ({
         alignItems: "center",
         display:"flex",
         alignContent: "center",
-        marginTop: "400px",
+        marginTop: "250px",
         color : blueGrey[300]
     }
 })
