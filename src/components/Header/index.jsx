@@ -53,7 +53,7 @@ class Header extends Component {
           
           <SearchInput 
             disableUnderline={true}
-            placeholder="search using github username"
+            placeholder="github username"
             onChange={this.searchInputValueChanged} 
             onEnter={this.searchInputOnEnter} 
             className={classes.searchInput} />
